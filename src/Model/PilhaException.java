@@ -1,8 +1,8 @@
 package Model;
 
-public class PilhaException {
+public class PilhaException extends Exception {
 	
-	public void Throw (String mensagem) throws Exception {
-		throw new Exception(mensagem);
+	public PilhaException (String mensagem) {
+		super(mensagem);
 	}
 }

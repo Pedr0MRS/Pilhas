@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -78,7 +79,12 @@ public class Apresentacao extends JFrame {
 		btnCalcular.setBounds(171, 122, 89, 23);
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent btnCalcular) {
-				String resultado = calculadora.Calcular(textField.getText(), comboBox.getSelectedIndex());
+				String resultado = "";
+				try {
+					resultado = calculadora.Calcular(textField.getText(), comboBox.getSelectedIndex());
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+				}
 				textField_1.setText(resultado);
 			}
 		});
