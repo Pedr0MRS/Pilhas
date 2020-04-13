@@ -70,8 +70,7 @@ public class PilhaLista<T> implements Pilha<T> {
 		if (!this.vazia()) {
 			result = this.topo;
 		} else {
-			// TODO: Criar classe de Exception;
-			System.out.println("Entrei Exc");
+			result = new ElementoLista<T>(null);
 		}
 		return result.getInfo();
 	}

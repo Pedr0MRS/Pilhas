@@ -57,7 +57,13 @@ public class PilhaVetor<T> implements Pilha<T> {
 	@Override
 	public T peek() {
 		T item = null;
-		if(this.vetor[numero] != null) {			
+		if(this.numero == -1) {
+			this.numero++;
+			this.vetor[numero] = null;
+			item = vetor[numero];
+			numero--;
+		}
+		else if(this.vetor[numero] != null) {			
 			item = this.vetor[numero];
 		}else {
 			//TODO: Criar classe de Exception

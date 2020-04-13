@@ -6,7 +6,7 @@ public class Calculadora {
 	PilhaException exception = new PilhaException();
 	
 	public String Calcular(String expressao, int tipoLista) {
-		if(tipoLista == 1) {
+		if(tipoLista == 0) {
 			return CalcularPilhaVetor(expressao);
 		}
 		else {
@@ -23,27 +23,27 @@ public class Calculadora {
 		for (int i = 0; i < array.length; i++) {
 			switch (array[i]) {
 			case "+":
-				a = (double) pilha.pop();
-				b = (double) pilha.pop();
-				total = Double.sum(a, b);
+				a = pilha.pop();
+				b = pilha.pop();
+				total = Soma(b, a);
 				pilha.push(total);
 				break;
 			case "-":
-				a = (double) pilha.pop();
-				b = (double) pilha.pop();
-				total = Subtrai(a, b);
+				a = pilha.pop();
+				b = pilha.pop();
+				total = Subtrai(b, a);
 				pilha.push(total);
 				break;
 			case "*":
-				a = (double) pilha.pop();
-				b = (double) pilha.pop();
-				total = Multiplica(a, b);
+				a = pilha.pop();
+				b = pilha.pop();
+				total = Multiplica(b, a);
 				pilha.push(total);
 				break;
 			case "/":
-				a = (double) pilha.pop();
-				b = (double) pilha.pop();
-				total = Divide(a, b);
+				a = pilha.pop();
+				b = pilha.pop();
+				total = Divide(b, a);
 				pilha.push(total);
 				break;
 			default:
@@ -70,25 +70,25 @@ public class Calculadora {
 			case "+":
 				a = pilha.pop();
 				b = pilha.pop();
-				total = Soma(a, b);
+				total = Soma(b, a);
 				pilha.push(total);
 				break;
 			case "-":
 				a = pilha.pop();
 				b = pilha.pop();
-				total = Subtrai(a, b);
+				total = Subtrai(b, a);
 				pilha.push(total);
 				break;
 			case "*":
 				a = pilha.pop();
 				b = pilha.pop();
-				total = Multiplica(a, b);
+				total = Multiplica(b, a);
 				pilha.push(total);
 				break;
 			case "/":
 				a = pilha.pop();
 				b = pilha.pop();
-				total = Divide(a, b);
+				total = Divide(b, a);
 				pilha.push(total);
 				break;
 			default:
