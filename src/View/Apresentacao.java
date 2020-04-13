@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,13 +25,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
+import javax.swing.JFormattedTextField;
 
 public class Apresentacao extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField textField_1;
 	private Calculadora calculadora = new Calculadora();
+	private String value = "";
 
 	/**
 	 * Launch the application.
@@ -55,11 +60,8 @@ public class Apresentacao extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(80, 46, 344, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		Integer operadores[] = new Integer[] {32, 43, 45, 42, 47, 8 }; 
+		List<Integer> list = Arrays.asList(operadores);
 		
 		JLabel lblExpresso = new JLabel("Express\u00E3o:");
 		lblExpresso.setBounds(10, 49, 77, 14);
@@ -74,6 +76,10 @@ public class Apresentacao extends JFrame {
 		contentPane.add(comboBox);
 		comboBox.addItem("Vetor");
 		comboBox.addItem("Dinâmica");
+		
+		JFormattedTextField textField = new JFormattedTextField();
+		textField.setBounds(80, 46, 344, 20);
+		contentPane.add(textField);
 		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.setBounds(171, 122, 89, 23);

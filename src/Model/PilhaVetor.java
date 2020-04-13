@@ -56,7 +56,7 @@ public class PilhaVetor<T> implements Pilha<T> {
 	@Override
 	public T peek() {
 		T item = null;
-		if(this.numero == -1 && this.vetor[numero] != null) {			
+		if(this.numero != -1 && this.vetor[numero] != null) {			
 			item = this.vetor[numero];
 		}
 		return item;

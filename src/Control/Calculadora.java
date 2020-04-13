@@ -22,6 +22,7 @@ public class Calculadora {
 		double b = 0;
 		double total = 0;
 		for (int i = 0; i < array.length; i++) {
+			
 			switch (array[i]) {
 			case "+":
 				ValidateOperand(pilha.toString());
@@ -52,6 +53,7 @@ public class Calculadora {
 				pilha.push(total);
 				break;
 			default:
+				tryParseDouble(array[i]);
 				if(pilha.vazia() || ((pilha.toString()).split(",")).length < 2) {	
 					String f[] = pilha.toString().split(",");
 					pilha.push(Double.parseDouble(array[i]));
@@ -102,6 +104,7 @@ public class Calculadora {
 				pilha.push(total);
 				break;
 			default:
+				tryParseDouble(array[i]);
 				if(pilha.vazia() || pilha.toString().split(",").length < 2) {
 					pilha.push(Double.parseDouble(array[i]));
 				}
@@ -135,5 +138,13 @@ public class Calculadora {
 		if(array.length == 1) {
 			throw new PilhaException("Não há números o suficiente para realizar a operação.");
 		}
+	}
+	
+	private void tryParseDouble(String value) throws PilhaException {  
+	     try {  
+	         Double.parseDouble(value); 
+	      } catch (NumberFormatException e) {  
+	         throw new PilhaException("Insira apenas números e operadores (+, -, *, /)");
+	      }  
 	}
 }
