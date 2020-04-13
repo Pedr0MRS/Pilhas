@@ -1,6 +1,6 @@
 package Model;
 
-public class PilhaLista<T> implements Pilha<T> {
+public class PilhaLista<T> implements Pilha<T>  {
 	private ElementoLista<T> topo;
 	String a = "";
 
@@ -25,13 +25,12 @@ public class PilhaLista<T> implements Pilha<T> {
 	}
 
 	@Override
-	public void push(T valor) {
+	public void push(T valor) throws Exception {
 		ElementoLista<T> novoItem = null;		
 		if (valor != null) {
 			novoItem = new ElementoLista<T>(valor);
 		} else {
-			// TODO: Criar classe de Exception;
-			System.out.println("Entrei Exc");
+			throw new PilhaException("Insira um valor válido");
 		}
 
 		if (this.topo == null) {
@@ -44,7 +43,7 @@ public class PilhaLista<T> implements Pilha<T> {
 	}
 
 	@Override
-	public T pop() {
+	public T pop() throws Exception {
 		ElementoLista<T> result = null;
 
 		if (!this.vazia()) {
@@ -57,8 +56,7 @@ public class PilhaLista<T> implements Pilha<T> {
 				this.topo.setProx(null);
 			}
 		} else {
-			// TODO: Criar classe de Exception;
-			System.out.println("Entrei Exc");
+			throw new PilhaException("A pilha está vazia.");
 		}
 		return result.getInfo();
 	}
@@ -70,8 +68,7 @@ public class PilhaLista<T> implements Pilha<T> {
 		if (!this.vazia()) {
 			result = this.topo;
 		} else {
-			// TODO: Criar classe de Exception;
-			System.out.println("Entrei Exc");
+			result = new ElementoLista<T>(null);
 		}
 		return result.getInfo();
 	}

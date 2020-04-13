@@ -1,7 +1,9 @@
 package Model;
 
+import com.sun.istack.internal.Nullable;
+
 public class ElementoLista<T> {
-	private T info;
+	@Nullable private T info;
 	private ElementoLista<T> prox;
 	private ElementoLista<T> anter;
 	

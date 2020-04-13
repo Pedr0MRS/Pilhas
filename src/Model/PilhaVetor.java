@@ -13,43 +13,42 @@ public class PilhaVetor<T> implements Pilha<T> {
 	public String toString() {
 		String result = ""; 
 		int controle = 0;
-		for(T item : vetor) {			
+		
+		for (int i = 0; i < numero + 1; i++) {
 			if(controle == 0) {
-				result+= item;
+				result+= vetor[i];
 				controle++;
 			}else {				
-				result+= ","+ item;
+				result+= ","+ vetor[i];
 			}
 		}
+		
 		return result;
 	}
 
 	@Override
-	public void push(T v) {
+	public void push(T v) throws Exception {
 		if(numero < this.getTamanho()) {
 			if(v != null) {
 				numero++;	
 				this.vetor[numero] = v;				
 			}else{
-				//TODO: Criar classe de Exception
-				System.out.println("Entrei Exc");
+				throw new PilhaException("Insira um valor válido");
 			}
 		}else{
-			//TODO: Criar classe de Exception
-			System.out.println("Entrei Exc");
+			throw new PilhaException("Posição inválida.");
 		}
 	}
 
 	@Override
-	public T pop() {
+	public T pop() throws Exception {
 		T item = null;
 		if(this.vetor[numero] != null) {			
 			item = this.vetor[numero];
 			this.vetor[numero] = null;
 			this.numero--;
 		}else {
-			//TODO: Criar classe de Exception
-			System.out.println("Entrei Exc");
+			throw new PilhaException("A pilha está vazia.");
 		}
 		return item;
 	}
@@ -57,11 +56,8 @@ public class PilhaVetor<T> implements Pilha<T> {
 	@Override
 	public T peek() {
 		T item = null;
-		if(this.vetor[numero] != null) {			
+		if(this.numero == -1 && this.vetor[numero] != null) {			
 			item = this.vetor[numero];
-		}else {
-			//TODO: Criar classe de Exception
-			System.out.println("Entrei Exc");
 		}
 		return item;
 	}
